@@ -1,25 +1,13 @@
 import React from 'react';
-import logo from '@assets/logo.svg';
 import '@app/App.scss';
-import { Trans, useTranslation } from 'react-i18next';
+import Home from '@src/app/features/home/Home';
+import { APP_FILE_PATH } from './shared/constants';
 
-function App() {
-  const { t } = useTranslation();
+const App: React.FC = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <img src={logo} className="app-logo" alt="logo" />
-        <p>
-          <Trans i18nKey='home.edit_and_save' values={{path: 'src/app/App.tsx'}} />
-        </p>
-        <a
-          className="app-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t('home.learn_react')}
-        </a>
+        <Home app={{path: APP_FILE_PATH}}></Home>
       </header>
     </div>
   );
