@@ -1,5 +1,5 @@
-@import '../../../variables.scss';
+@import '../../../index.scss';
 
 .button {
-  color: $blue-react;
+  @extend .btn, .btn-light, .btn-lg;
 }

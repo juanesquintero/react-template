@@ -10,8 +10,11 @@ const Button: React.FC = () => {
   }
 
   return <>
-    <p> Counter { count }</p>
-    <button className="button" onClick={handleClick}>Increment</button>
+    <p> Counter: <code>{ count }</code> </p>
+    <button className="button" onClick={handleClick}>
+      <i className="bi bi-plus-circle mr-2"></i>
+      Increment
+    </button>
   </>
 }
 
