@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Button.scss';
+import { ButtonProps } from './Button.types';
 
-const Button: React.FC = () => {
+const Button: React.FC<ButtonProps> = ({getDouble}: ButtonProps) => {
   const [count, setCount] = useState(0);
 
-  const handleClick = () => {
-    const newCount = count + 1;
-    setCount(newCount);
-  }
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  }, [count]); // Only re-run the effect if count changes
 
   return <>
-    <p> Counter: <code>{ count }</code> </p>
-    <button className="button" onClick={handleClick}>
-      <i className="bi bi-plus-circle mr-2"></i>
-      Increment
+    <button className="button" onClick={() => {setCount(count + 1);}}>
+      <i className="bi bi-plus mr-2"></i>
+      Add Click
     </button>
+
+    <p>{getDouble()}</p>
   </>
 }
 
