@@ -38,7 +38,11 @@ const Counter: React.FC = () => {
       <Button getDouble={getCounterDouble}/>
       <br/>
 
-      <input type="text" onClick={(e: any) => setMsg(e.target.value)}/>
+      <input 
+        type="text" 
+        onClick={
+          ({target}) => setMsg((target as HTMLInputElement).value)
+        }/>
       <p>{msg}</p>
     </>
   );
