@@ -28,7 +28,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "eslint": "eslint --ext .ts --ext .tsx src",
+    "eslint:fix": "eslint --fix --ext .ts --ext .tsx src"
   },
   "eslintConfig": {
     "extends": [
@@ -47,5 +49,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.3"
   }
 }
