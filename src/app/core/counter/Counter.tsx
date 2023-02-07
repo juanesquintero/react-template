@@ -19,8 +19,7 @@ const Counter: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [msg, setMsg] = useState('');
   
-  // const getCounterDouble = useCallback(() => state.count * 2, [state.count]);
-  const getCounterDouble = () => state.count * 2;
+  const getCounterDouble = useCallback(() => state.count * 2, [state.count]);
   
   return (
     <>
