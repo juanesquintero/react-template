@@ -30,7 +30,10 @@
     "test": "craco test",
     "eject": "craco eject",
     "eslint": "eslint --ext .ts --ext .tsx src",
-    "eslint:fix": "eslint --fix --ext .ts --ext .tsx src"
+    "eslint:fix": "eslint --fix --ext .ts --ext .tsx src",
+    "test:nowatch": "react-scripts test --watchAll=false",
+    "prepare": "husky install",
+    "prepublish": "npm run eslint:fix"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +57,7 @@
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
     "prettier": "^2.8.3"
   }
 }
