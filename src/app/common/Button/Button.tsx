@@ -1,8 +1,8 @@
 import React from 'react';
 import './Button.scss';
-import { ButtonProps } from './Button.types';
+import { IButtonProps } from './Button.types';
 
-const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
+const Button: React.FC<IButtonProps> = (props: IButtonProps) => {
 	const { text, ..._props } = props;
 
 	const styleClass = props.theme === 'light' ? 'button--light' : 'button';

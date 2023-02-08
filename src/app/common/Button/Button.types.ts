@@ -1,4 +1,4 @@
-export interface ButtonProps {
+export interface IButtonProps {
 	text: string;
 	theme: 'dark' | 'light';
 	type?: 'button' | 'submit';
