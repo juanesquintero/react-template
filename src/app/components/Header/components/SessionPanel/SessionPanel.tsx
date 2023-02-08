@@ -6,7 +6,7 @@ const SessionPanel: React.FC = () => {
 	return (
 		<span className='session-panel'>
 			<p className='session-panel__username'>User Name</p>
-			<Button theme='light'>Login</Button>
+			<Button text='Logout' theme='dark' icon='bi bi-box-arrow-left'></Button>
 		</span>
 	);
 };

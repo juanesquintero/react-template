@@ -1,4 +1,9 @@
 export interface ButtonProps {
+	text: string;
+	theme: 'dark' | 'light';
+	type?: 'button' | 'submit';
 	href?: string;
-	[key: string]: string | boolean;
+	icon?: string;
+	children?: JSX.Element[] | JSX.Element;
+	onClick?: () => void;
 }
