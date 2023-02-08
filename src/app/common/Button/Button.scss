@@ -1,0 +1,9 @@
+@import '../../../index.scss';
+
+.button{
+    @extend .btn;
+
+    &--light {
+        @extend .btn, .btn-light;
+    }
+}
