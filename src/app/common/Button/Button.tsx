@@ -1,11 +1,17 @@
 import React from 'react';
 import './Button.scss';
-import { IButtonProps } from './Button.types';
+import { IButtonProps, IButtonAtrr } from './Button.types';
 
 const Button: React.FC<IButtonProps> = (props: IButtonProps) => {
-	const { text, ..._props } = props;
+	const { text, style, size, ..._props }: IButtonAtrr = props;
 
-	const styleClass = props.theme === 'light' ? 'button--light' : 'button';
+	_props.className = 'button';
+	if (style) {
+		_props.className += ' btn-' + style;
+	}
+	if (size) {
+		_props.className += ' btn-' + size;
+	}
 
 	const content = props.icon ? (
 		<>
@@ -16,14 +22,10 @@ const Button: React.FC<IButtonProps> = (props: IButtonProps) => {
 	);
 
 	if (props.href) {
-		return (
-			<a className={styleClass} {..._props}>
-				{content}
-			</a>
-		);
+		return <a {..._props}>{content}</a>;
 	}
 	return (
-		<button className={styleClass} type='button' {..._props}>
+		<button type='button' {..._props}>
 			{content}
 		</button>
 	);

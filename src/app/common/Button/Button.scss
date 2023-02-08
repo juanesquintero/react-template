@@ -1,9 +1,5 @@
 @import '../../../index.scss';
 
 .button{
-    @extend .btn, .btn-sm, .border-0, .btn-outline-light;
-
-    &--light {
-        @extend .button, .btn-outline-dark;
-    }
+    @extend .btn, .border-0;
 }
