@@ -5,9 +5,14 @@ import Courses from './components/Courses/Courses';
 
 const App: React.FC = () => {
 	return (
-		<section>
+		<section className='app'>
 			<Header />
-			<Courses></Courses>
+			<main className='app__content'>
+				<div className='app__content-section'>
+					<Courses></Courses>
+				</div>
+			</main>
+			<footer></footer>
 		</section>
 	);
 };
