@@ -6,7 +6,7 @@ import './SearchBar.scss';
 const SearchBar: React.FC = () => {
 	return (
 		<section className='search-bar'>
-			<span>
+			<span className='d-flex'>
 				<Input className='search-bar__input' type='text' />
 				<Button text='Search' style='light'></Button>
 			</span>

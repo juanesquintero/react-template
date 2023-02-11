@@ -26,7 +26,12 @@ const CourseCard: React.FC<ICourse> = (props: ICourse) => {
 					<strong>Created:</strong>
 					{formatCreationDate(props.creationDate)}
 				</div>
-				<Button text='Show course' style='outline-light' />
+				<Button
+					text='Show course'
+					style='outline-dark'
+					icon='bi bi-eye'
+					size='sm'
+				/>
 			</div>
 		</section>
 	);

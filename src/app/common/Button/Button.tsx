@@ -1,11 +1,10 @@
 import React from 'react';
-import './Button.scss';
 import { IButtonProps, IButtonAtrr } from './Button.types';
 
 const Button: React.FC<IButtonProps> = (props: IButtonProps) => {
 	const { text, style, size, ..._props }: IButtonAtrr = props;
 
-	_props.className = 'button';
+	_props.className = 'btn m-1';
 	if (style) {
 		_props.className += ' btn-' + style;
 	}
