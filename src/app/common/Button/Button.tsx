@@ -14,7 +14,7 @@ const Button: React.FC<IButtonProps> = (props: IButtonProps) => {
 
 	const content = props.icon ? (
 		<>
-			<i className={props.icon}></i> {text}
+			<i className={'bi bi-' + props.icon}></i> {text}
 		</>
 	) : (
 		text
