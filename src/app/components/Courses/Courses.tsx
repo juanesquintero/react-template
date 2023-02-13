@@ -9,7 +9,7 @@ const Courses: React.FC = () => {
 		<section>
 			<SearchBar></SearchBar>
 			{mockedCoursesList.map((course) => (
-				<div className='courses__item'>
+				<div key={course.id} className='courses__item'>
 					<CourseCard {...course}></CourseCard>
 				</div>
 			))}

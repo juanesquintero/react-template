@@ -2,6 +2,7 @@ export interface IInputProps {
 	label?: string;
 	placeholder?: string;
 	className?: string;
+	inline?: boolean;
 	onChange?: () => void;
 	style?: style;
 	type?: customInputType | inputType;
