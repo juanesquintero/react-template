@@ -1,5 +1,6 @@
 export interface IButtonProps {
 	text: string;
+	className?: string;
 	style?: style;
 	size?: 'sm' | 'lg';
 	type?: 'button' | 'submit';
@@ -7,10 +8,6 @@ export interface IButtonProps {
 	icon?: string;
 	children?: JSX.Element[] | JSX.Element;
 	onClick?: () => void;
-}
-
-export interface IButtonAtrr extends IButtonProps {
-	className?: string;
 }
 
 type style =

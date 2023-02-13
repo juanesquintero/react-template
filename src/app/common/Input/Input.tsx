@@ -31,10 +31,10 @@ const Input: React.FC<IInputProps> = (props: IInputProps) => {
 	};
 
 	return (
-		<>
+		<div className='form-group my-2'>
 			{label ? <label>{label}</label> : null}
 			{renderInput(props.type)}
-		</>
+		</div>
 	);
 };
 
