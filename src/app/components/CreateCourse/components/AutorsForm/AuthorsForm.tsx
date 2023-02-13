@@ -3,6 +3,7 @@ import '@app/App.scss';
 import Input from '@src/app/common/Input/Input';
 import Button from '@src/app/common/Button/Button';
 import { mockedAuthorsList } from '@src/app/components/Courses/Courses.mock';
+import AuthorItem from '../AuthorItem/AuthorItem';
 
 const AuthorsForm: React.FC = () => {
 	return (
@@ -22,16 +23,7 @@ const AuthorsForm: React.FC = () => {
 			<div className='g-col-6'>
 				<h5>Authors</h5>
 				{mockedAuthorsList.map((author) => (
-					<div className='d-flex justify-content-between align-items-center'>
-						{author.name}
-						<Button
-							text='Add author'
-							type='submit'
-							style='outline-dark'
-							size='sm'
-							className='ml-auto'
-						></Button>
-					</div>
+					<AuthorItem {...author} />
 				))}
 			</div>
 
