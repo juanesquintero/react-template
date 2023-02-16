@@ -7,7 +7,7 @@ export interface IButtonProps {
 	href?: string;
 	icon?: string;
 	children?: JSX.Element[] | JSX.Element;
-	onClick?: () => void;
+	onClick?: (param: any) => void;
 }
 
 type style =
