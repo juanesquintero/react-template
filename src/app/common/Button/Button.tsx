@@ -5,7 +5,7 @@ import setStyleClass from '@src/app/helpers/setStyleClass';
 const Button: React.FC<IButtonProps> = (props: IButtonProps) => {
 	const { text, style, size, type = 'button', ..._props } = props;
 
-	_props.className = setStyleClass(
+	_props.className += setStyleClass(
 		{ style, size },
 		{ prefix: 'btn', initial: 'm-2' }
 	);

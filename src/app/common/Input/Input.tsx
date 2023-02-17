@@ -5,7 +5,7 @@ import { IInputProps } from './Input.types';
 const Input: React.FC<IInputProps> = (props: IInputProps) => {
 	const { label, style, size, inline, ..._props } = props;
 
-	_props.className = setStyleClass(
+	_props.className += setStyleClass(
 		{ style, size, inline },
 		{
 			prefix: 'form-control',
