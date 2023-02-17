@@ -1,5 +1,6 @@
 export interface IButtonProps {
-	text: string;
+	text?: string;
+	title?: string;
 	className?: string;
 	style?: style;
 	size?: 'sm' | 'lg';

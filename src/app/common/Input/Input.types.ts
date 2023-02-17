@@ -3,7 +3,7 @@ export interface IInputProps {
 	placeholder?: string;
 	className?: string;
 	inline?: boolean;
-	onChange?: () => void;
+	onChange?: (param: any) => void;
 	style?: style;
 	type?: customInputType | inputType;
 	size?: 'sm' | 'lg';
