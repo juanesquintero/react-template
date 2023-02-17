@@ -2,16 +2,20 @@ export interface IButtonProps {
 	text?: string;
 	title?: string;
 	className?: string;
-	style?: style;
-	size?: 'sm' | 'lg';
-	type?: 'button' | 'submit';
+	style?: ButtonStyle;
+	size?: ButtonSize;
+	type?: ButtonType;
 	href?: string;
 	icon?: string;
 	children?: JSX.Element[] | JSX.Element;
 	onClick?: (param: any) => void;
 }
 
-type style =
+type ButtonType = 'button' | 'submit';
+
+type ButtonSize = 'sm' | 'lg';
+
+type ButtonStyle =
 	| 'outline-primary'
 	| 'outline-secondary'
 	| 'outline-success'

@@ -1,24 +1,19 @@
+import setStyleClass from '@src/app/helpers/setStyleClass';
 import React from 'react';
 import { IInputProps } from './Input.types';
 
 const Input: React.FC<IInputProps> = (props: IInputProps) => {
 	const { label, style, size, inline, ..._props } = props;
 
-	const setClass = () => {
-		_props.className = 'form-control m-1';
-		if (style) {
-			_props.className += ' btn-' + style;
+	_props.className = setStyleClass(
+		{ style, size, inline },
+		{
+			prefix: 'form-control',
+			initial: 'm-1',
 		}
-		if (size) {
-			_props.className += ' btn-' + size;
-		}
-		if (inline) {
-			_props.className += ' d-inline w-auto';
-		}
-	};
+	);
 
 	const renderInput = (type: string) => {
-		setClass();
 		const inputTag = {
 			textarea: <textarea rows={3} {..._props}></textarea>,
 			select: <select {..._props} />,

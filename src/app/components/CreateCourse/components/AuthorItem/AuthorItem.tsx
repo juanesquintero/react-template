@@ -6,10 +6,7 @@ const AuthorItem: React.FC<IAuthorItemProps> = (props: IAuthorItemProps) => {
 	const { onAdd, onRemove, ...author } = props;
 
 	return (
-		<div
-			key={author.id}
-			className='d-flex justify-content-between align-items-center'
-		>
+		<div className='d-flex justify-content-between align-items-center'>
 			<p>{author.name}</p>
 			<span>
 				{onAdd ? (

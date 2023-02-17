@@ -5,26 +5,33 @@ import Button from '@src/app/common/Button/Button';
 import formatCreationDate from '@src/app/helpers/formatCreationDate';
 import getCourseDuration from '@src/app/helpers/getCourseDuration';
 
-const CourseCard: React.FC<ICourse> = (props: ICourse) => {
+const CourseCard: React.FC<ICourse> = ({
+	id,
+	title,
+	description,
+	authors,
+	duration,
+	creationDate,
+}: ICourse) => {
 	return (
 		<section className='course-card'>
 			<div>
-				<h5>{props.title}</h5>
-				<p>{props.description}</p>
+				<h5>{title}</h5>
+				<p>{description}</p>
 			</div>
 
 			<div className='course-card-column'>
 				<div>
 					<strong>Authors:</strong>
-					{props.authors.join(', ')}
+					{authors.join(', ')}
 				</div>
 				<div>
 					<strong>Duration:</strong>
-					{getCourseDuration(props.duration)}
+					{getCourseDuration(duration)}
 				</div>
 				<div>
 					<strong>Created:</strong>
-					{formatCreationDate(props.creationDate)}
+					{formatCreationDate(creationDate)}
 				</div>
 				<Button
 					text='Show course'
