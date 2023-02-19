@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@src/index.scss';
-import '@assets/i18n';
+import '@src/config/i18n';
 import App from '@app/App';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import { Registration, Login, Courses, CreateCourse } from './app/components';
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
@@ -11,7 +13,15 @@ const root = ReactDOM.createRoot(
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<App />
+			<Routes>
+				<Route path='/' element={<App />}>
+					<Route path='login' element={<Login />} />
+					<Route path='registration' element={<Registration />} />
+					<Route path='courses' element={<Courses />}>
+						<Route path='new' element={<CreateCourse />} />
+					</Route>
+				</Route>
+			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>
 );

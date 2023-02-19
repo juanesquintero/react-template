@@ -1,8 +1,10 @@
 import Button from '@src/app/common/Button/Button';
 import Input from '@src/app/common/Input/Input';
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { RegistrationFormType } from './Registration.types';
+import './Registration.scss';
+import usePost from '@src/app/shared/hooks/usePost';
 
 const Registration: React.FC = () => {
 	const [registerForm, setRegisterForm] = useState({
@@ -11,28 +13,25 @@ const Registration: React.FC = () => {
 		password: '',
 	});
 
-	const onChangeForm = ({ filed, value }: { filed: string; value: any }) => {
-		const newForm = registerForm;
-		newForm[filed] = value;
-		setRegisterForm(newForm);
+	const onChangeForm = (change: RegistrationFormType) => {
+		setRegisterForm({ ...registerForm, ...change });
 	};
+
 	const onRegister = () => {
-		axios.post('/api/', registerForm);
+		const apiResponse = usePost('/register', registerForm);
+		console.log('apiResponse', apiResponse);
 	};
 
 	return (
-		<div
-			className='container bg-white rounded my-5 p-5'
-			style={{ display: 'grid', placeItems: 'center' }}
-		>
-			<h5>Registration</h5>
-			<form action='' className='form my-3'>
+		<section className='registration'>
+			<form action='' className='registration-form'>
+				<h5>Registration</h5>
 				<Input
 					label='Name'
 					type='text'
 					className='my-2'
 					onChange={(e) => {
-						onChangeForm(e.target.value);
+						onChangeForm({ name: e.target.value });
 					}}
 				/>
 
@@ -41,7 +40,7 @@ const Registration: React.FC = () => {
 					type='email'
 					className='my-2'
 					onChange={(e) => {
-						onChangeForm(e.target.value);
+						onChangeForm({ email: e.target.value });
 					}}
 				/>
 
@@ -50,7 +49,7 @@ const Registration: React.FC = () => {
 					type='password'
 					className='my-2'
 					onChange={(e) => {
-						onChangeForm(e.target.value);
+						onChangeForm({ password: e.target.value });
 					}}
 				/>
 			</form>
@@ -64,7 +63,7 @@ const Registration: React.FC = () => {
 			<p className='my-5'>
 				If you have an account you can <Link to='login'>Login</Link>
 			</p>
-		</div>
+		</section>
 	);
 };
 
