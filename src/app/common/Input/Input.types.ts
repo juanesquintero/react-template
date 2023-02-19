@@ -1,17 +1,16 @@
-export interface IInputProps {
+export interface IInputAtrr {
+	type?: customInputType | inputType;
 	label?: string;
 	placeholder?: string;
 	className?: string;
-	inline?: boolean;
 	onChange?: (param: any) => void;
-	style?: styleType;
-	type?: customInputType | inputType;
-	size?: 'sm' | 'lg';
-	children?: JSX.Element[] | JSX.Element;
 }
 
-export interface IInputAtrr extends IInputProps {
-	className?: string;
+export interface IInputProps extends IInputAtrr {
+	style?: styleType;
+	size?: 'sm' | 'lg';
+	inline?: boolean;
+	children?: JSX.Element[] | JSX.Element;
 }
 
 type styleType = 'form-check' | 'form-control' | 'form-control-file';
