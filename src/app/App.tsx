@@ -3,6 +3,7 @@ import '@app/App.scss';
 import Header from './components/Header/Header';
 import Courses from './components/Courses/Courses';
 import CreateCourse from './components/CreateCourse/CreateCourse';
+import Registration from './components/Registration/Registration';
 
 const App: React.FC = () => {
 	return (
@@ -10,9 +11,11 @@ const App: React.FC = () => {
 			<Header />
 			<main className='app__content'>
 				<div className='app__content-section'>
-					<Courses />
+					{/* <Courses />
 					<br />
-					<CreateCourse />
+					<CreateCourse /> */}
+
+					<Registration />
 				</div>
 			</main>
 			<footer></footer>

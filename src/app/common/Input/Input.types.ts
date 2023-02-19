@@ -4,7 +4,7 @@ export interface IInputProps {
 	className?: string;
 	inline?: boolean;
 	onChange?: (param: any) => void;
-	style?: style;
+	style?: styleType;
 	type?: customInputType | inputType;
 	size?: 'sm' | 'lg';
 	children?: JSX.Element[] | JSX.Element;
@@ -14,7 +14,7 @@ export interface IInputAtrr extends IInputProps {
 	className?: string;
 }
 
-type style = 'form-check' | 'form-control' | 'form-control-file';
+type styleType = 'form-check' | 'form-control' | 'form-control-file';
 
 type customInputType = 'textarea' | 'select';
 

@@ -13,7 +13,7 @@ export interface IButtonProps {
 
 type ButtonType = 'button' | 'submit';
 
-type ButtonSize = 'sm' | 'lg';
+type ButtonSize = 'sm' | 'lg' | 'md';
 
 type ButtonStyle =
 	| 'outline-primary'
