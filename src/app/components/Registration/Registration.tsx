@@ -1,12 +1,14 @@
 import Button from '@src/app/common/Button/Button';
 import Input from '@src/app/common/Input/Input';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RegistrationFormType } from './Registration.types';
 import './Registration.scss';
 import usePost from '@src/app/shared/hooks/usePost';
 
 const Registration: React.FC = () => {
+	const navigate = useNavigate();
+
 	const [registerForm, setRegisterForm] = useState({
 		name: '',
 		email: '',
@@ -17,19 +19,23 @@ const Registration: React.FC = () => {
 		setRegisterForm({ ...registerForm, ...change });
 	};
 
-	const onRegister = () => {
-		const apiResponse = usePost('/register', registerForm);
-		console.log('apiResponse', apiResponse);
+	const onRegister = async () => {
+		const apiResponse = await usePost('/register', registerForm);
+		if (apiResponse?.successful) {
+			navigate('/courses');
+		} else {
+			alert('ERROR ' + apiResponse);
+		}
 	};
 
 	return (
 		<section className='registration'>
-			<form action='' className='registration-form'>
+			<form className='registration-form'>
 				<h5>Registration</h5>
 				<Input
 					label='Name'
 					type='text'
-					className='my-2'
+					className='my-3'
 					onChange={(e) => {
 						onChangeForm({ name: e.target.value });
 					}}
@@ -38,7 +44,7 @@ const Registration: React.FC = () => {
 				<Input
 					label='Email'
 					type='email'
-					className='my-2'
+					className='my-3'
 					onChange={(e) => {
 						onChangeForm({ email: e.target.value });
 					}}
@@ -47,22 +53,22 @@ const Registration: React.FC = () => {
 				<Input
 					label='Password'
 					type='password'
-					className='my-2'
+					className='my-3'
 					onChange={(e) => {
 						onChangeForm({ password: e.target.value });
 					}}
 				/>
-			</form>
-			<Button
-				text='Register'
-				style='outline-dark'
-				size='md'
-				onClick={onRegister}
-			/>
+				<Button
+					text='Register'
+					style='outline-dark'
+					size='md'
+					onClick={onRegister}
+				/>
 
-			<p className='my-5'>
-				If you have an account you can <Link to='login'>Login</Link>
-			</p>
+				<p className='my-5'>
+					If you have an account you can <Link to='login'>Login</Link>
+				</p>
+			</form>
 		</section>
 	);
 };

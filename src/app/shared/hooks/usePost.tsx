@@ -3,12 +3,16 @@ import env from '../../../config/enviroment';
 
 const usePost = async (endpoint: string, body: Record<string, any>) => {
 	try {
-		const response = await axios.post(env.apiPath + endpoint, body);
-		console.error(response.data);
-		return response.data;
+		const { data } = await axios.post(env.apiPath + endpoint, body, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		return data;
 	} catch (err) {
-		console.error(err);
+		console.log('err', err);
 		return err;
+		// return err?.response?.data?.errors?.map();
 	}
 };
 
