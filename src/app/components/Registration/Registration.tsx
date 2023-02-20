@@ -5,8 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { RegistrationFormType } from './Registration.types';
 import './Registration.scss';
 import usePost from '@src/app/shared/hooks/usePost';
+import useRedirect from '@src/app/shared/hooks/useRedirect';
 
 const Registration: React.FC = () => {
+	useRedirect('/courses')();
+
 	const navigate = useNavigate();
 
 	const [registerForm, setRegisterForm] = useState({

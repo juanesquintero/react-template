@@ -4,6 +4,7 @@ import { ICourse } from '../../Courses.types';
 import Button from '@src/app/common/Button/Button';
 import formatCreationDate from '@src/app/helpers/formatCreationDate';
 import getCourseDuration from '@src/app/helpers/getCourseDuration';
+import Tag from '@src/app/common/Tag/Tag';
 
 const CourseCard: React.FC<ICourse> = ({
 	id,
@@ -21,18 +22,9 @@ const CourseCard: React.FC<ICourse> = ({
 			</div>
 
 			<div className='course-card-column'>
-				<div>
-					<strong>Authors:</strong>
-					{authors.join(', ')}
-				</div>
-				<div>
-					<strong>Duration:</strong>
-					{getCourseDuration(duration)}
-				</div>
-				<div>
-					<strong>Created:</strong>
-					{formatCreationDate(creationDate)}
-				</div>
+				<Tag label='Authors' value={authors.join(', ')} />
+				<Tag label='Duration' value={getCourseDuration(duration)} />
+				<Tag label='Created' value={formatCreationDate(creationDate)} />
 				<Button
 					text='Show course'
 					style='outline-dark'

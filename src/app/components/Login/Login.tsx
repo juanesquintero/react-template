@@ -1,10 +1,13 @@
 import Button from '@src/app/common/Button/Button';
 import Input from '@src/app/common/Input/Input';
 import usePost from '@src/app/shared/hooks/usePost';
+import useRedirect from '@src/app/shared/hooks/useRedirect';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
+	useRedirect('/courses')();
+
 	const navigate = useNavigate();
 
 	const [loginForm, setLoginForm] = useState({
@@ -21,7 +24,8 @@ const Login: React.FC = () => {
 		const [endpoint, body] = ['/login', loginForm];
 		const apiResponse = await usePost({ endpoint, body });
 		if (apiResponse?.successful) {
-			localStorage.setItem('login', apiResponse?.result);
+			console.log(apiResponse?.result);
+			localStorage.setItem('token', 'apiResponse.result');
 			navigate('/courses');
 		} else {
 			alert('ERROR ' + apiResponse);

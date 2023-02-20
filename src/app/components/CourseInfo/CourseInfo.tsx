@@ -4,6 +4,7 @@ import { ICourse } from '../Courses/Courses.types';
 import useFetch from '@src/app/shared/hooks/useFetch';
 import getCourseDuration from '@src/app/helpers/getCourseDuration';
 import formatCreationDate from '@src/app/helpers/formatCreationDate';
+import Tag from '@src/app/common/Tag/Tag';
 
 const CourseInfo: React.FC = (props: any) => {
 	const { courseid } = useParams();
@@ -13,28 +14,17 @@ const CourseInfo: React.FC = (props: any) => {
 		<div className='bg-white rounded px-5 py-3 my-5'>
 			<Link to='/courses'> {'<< Back to courses'} </Link>
 			<div className='text-center m-3 mb-5'>
-				<h5>{data?.title}</h5>
+				<h3>{data?.title}</h3>
 			</div>
 			<div className='row text-left'>
 				<div className='col-6'>
 					<p>{data?.description}</p>
 				</div>
 				<div className='col-6 d-block'>
-					<div>
-						<strong>ID</strong>: {data?.id}
-					</div>
-					<div>
-						<strong>Duration</strong>:{getCourseDuration(data?.duration)}
-					</div>
-					<div>
-						<strong>Created</strong>:{formatCreationDate(data?.creationDate)}
-					</div>
-					<div>
-						<strong>Authors</strong>:
-						{data?.authors?.map((a) => (
-							<p>{a}</p>
-						))}
-					</div>
+					<Tag label='ID' value={data?.id} />
+					<Tag label='Duration' value={getCourseDuration(data?.duration)} />
+					<Tag label='Created' value={formatCreationDate(data?.creationDate)} />
+					<Tag label='Authors' value={data?.authors?.join(', ')} />
 				</div>
 			</div>
 		</div>
