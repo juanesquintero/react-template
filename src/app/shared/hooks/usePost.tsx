@@ -1,7 +1,13 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import env from '../../../config/enviroment';
 
-const usePost = async (endpoint: string, body: Record<string, any>) => {
+interface IPost {
+	endpoint: string;
+	body: Record<string, any>;
+}
+
+const usePost = async ({ endpoint, body }: IPost) => {
 	try {
 		const { data } = await axios.post(env.apiPath + endpoint, body, {
 			headers: {

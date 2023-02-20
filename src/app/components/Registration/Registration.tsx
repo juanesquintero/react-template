@@ -20,9 +20,10 @@ const Registration: React.FC = () => {
 	};
 
 	const onRegister = async () => {
-		const apiResponse = await usePost('/register', registerForm);
+		const [endpoint, body] = ['/register', registerForm];
+		const apiResponse = await usePost({ endpoint, body });
 		if (apiResponse?.successful) {
-			navigate('/courses');
+			navigate('/login');
 		} else {
 			alert('ERROR ' + apiResponse);
 		}
@@ -66,7 +67,7 @@ const Registration: React.FC = () => {
 				/>
 
 				<p className='my-5'>
-					If you have an account you can <Link to='login'>Login</Link>
+					If you have an account you can <Link to='/login'>Login</Link>
 				</p>
 			</form>
 		</section>

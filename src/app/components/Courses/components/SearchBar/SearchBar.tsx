@@ -7,7 +7,7 @@ const SearchBar: React.FC = () => {
 	return (
 		<section className='search-bar'>
 			<span className='d-flex'>
-				<Input className='search-bar__input' type='text' />
+				<Input className='search-bar__input' type='text' size='sm' />
 				<Button text='Search' style='light' size='sm' className='m-3' />
 			</span>
 
