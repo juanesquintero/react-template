@@ -1,0 +1,9 @@
+@import '../../../variables.scss';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 5rem;
+    background-color: $blue-dark;
+    color: $white;
+}
