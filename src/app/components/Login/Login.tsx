@@ -16,10 +16,12 @@ const Login: React.FC = () => {
 		setLoginForm({ ...loginForm, ...change });
 	};
 
-	const onLogin = async () => {
+	const onLogin = async (e: any) => {
+		e.preventDefault();
 		const [endpoint, body] = ['/login', loginForm];
 		const apiResponse = await usePost({ endpoint, body });
 		if (apiResponse?.successful) {
+			localStorage.setItem('login', apiResponse?.result);
 			navigate('/courses');
 		} else {
 			alert('ERROR ' + apiResponse);
@@ -28,7 +30,7 @@ const Login: React.FC = () => {
 
 	return (
 		<section className='registration'>
-			<form className='registration-form'>
+			<form className='registration-form' onSubmit={onLogin}>
 				<h5>Login</h5>
 				<Input
 					label='Email'
@@ -47,7 +49,7 @@ const Login: React.FC = () => {
 						onChangeForm({ password: e.target.value });
 					}}
 				/>
-				<Button text='Login' style='outline-dark' size='md' onClick={onLogin} />
+				<Button text='Login' style='outline-dark' size='md' type='submit' />
 
 				<p className='mt-5'>
 					If you not have an account you can{' '}

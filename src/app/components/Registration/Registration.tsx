@@ -19,7 +19,8 @@ const Registration: React.FC = () => {
 		setRegisterForm({ ...registerForm, ...change });
 	};
 
-	const onRegister = async () => {
+	const onRegister = async (e: any) => {
+		e.preventDefault();
 		const [endpoint, body] = ['/register', registerForm];
 		const apiResponse = await usePost({ endpoint, body });
 		if (apiResponse?.successful) {
@@ -31,7 +32,7 @@ const Registration: React.FC = () => {
 
 	return (
 		<section className='registration'>
-			<form className='registration-form'>
+			<form className='registration-form' onSubmit={onRegister}>
 				<h5>Registration</h5>
 				<Input
 					label='Name'
@@ -59,12 +60,7 @@ const Registration: React.FC = () => {
 						onChangeForm({ password: e.target.value });
 					}}
 				/>
-				<Button
-					text='Register'
-					style='outline-dark'
-					size='md'
-					onClick={onRegister}
-				/>
+				<Button text='Register' style='outline-dark' size='md' type='submit' />
 
 				<p className='my-5'>
 					If you have an account you can <Link to='/login'>Login</Link>

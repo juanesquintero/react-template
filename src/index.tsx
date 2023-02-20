@@ -6,6 +6,7 @@ import App from '@app/App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Registration, Login, Courses, CreateCourse } from './app/components';
+import CourseInfo from './app/components/CourseInfo/CourseInfo';
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
@@ -17,9 +18,9 @@ root.render(
 				<Route path='/' element={<App />}>
 					<Route path='login' element={<Login />} />
 					<Route path='registration' element={<Registration />} />
-					<Route path='courses' element={<Courses />}>
-						<Route path='new' element={<CreateCourse />} />
-					</Route>
+					<Route path='courses' element={<Courses />}></Route>
+					<Route path='courses/new' element={<CreateCourse />} />
+					<Route path='courses/:courseid' element={<CourseInfo />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
