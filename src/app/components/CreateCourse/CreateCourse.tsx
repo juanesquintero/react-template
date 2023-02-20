@@ -3,18 +3,42 @@ import Input from '@src/app/common/Input/Input';
 import Button from '@src/app/common/Button/Button';
 import AuthorsForm from './components/AutorsForm/AuthorsForm';
 import getCourseDuration from '@src/app/helpers/getCourseDuration';
+import { mockedCoursesList } from '../Courses/Courses.mock';
+import { useNavigate } from 'react-router-dom';
+import { ICourse } from '../Courses/Courses.types';
+import { useForm } from 'react-hook-form';
 
 const CreateCourse: React.FC = () => {
+	const navigate = useNavigate();
+	const { register, handleSubmit } = useForm<ICourse>({
+		defaultValues: {
+			title: '',
+			description: '',
+			duration: 0,
+			creationDate: '',
+		},
+	});
+
+	const onCreate = (data: ICourse) => {
+		mockedCoursesList.push(data);
+		navigate('/courses');
+	};
+
 	return (
-		<>
-			<h5>Create Course</h5>
-			<form className='bg-white rounded px-5 py-3'>
+		<div className='my-4'>
+			<h5 className='my-4'>Create Course</h5>
+			<form
+				className='bg-white rounded px-5 py-3'
+				onSubmit={handleSubmit(onCreate)}
+			>
 				<div className='form-group'>
 					<div className='form-inline d-flex justify-content-between'>
 						<Input
+							name='title'
 							label='Title'
 							type='text'
 							placeholder='Python Course No. 1'
+							ref={register}
 						/>
 
 						<div className='d-flex align-items-baseline'>
@@ -27,16 +51,27 @@ const CreateCourse: React.FC = () => {
 						</div>
 					</div>
 					<div className='form-group'>
-						<Input label='Description' type='textarea' placeholder='Password' />
+						<Input
+							name='description'
+							label='Description'
+							type='textarea'
+							placeholder='Password'
+							ref={register}
+						/>
 					</div>
 					<div className='form-group d-flex align-items-center'>
-						<Input label='Duration' type='number' />
+						<Input
+							name='duration'
+							label='Duration'
+							type='number'
+							ref={register}
+						/>
 						<p className='mt-5 ms-3'>{getCourseDuration(100)}</p>
 					</div>
 				</div>
 				<AuthorsForm />
 			</form>
-		</>
+		</div>
 	);
 };
 

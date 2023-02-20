@@ -1,9 +1,11 @@
 import Button from '@src/app/common/Button/Button';
 import Input from '@src/app/common/Input/Input';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SearchBar.scss';
 
 const SearchBar: React.FC = () => {
+	const navigate = useNavigate();
 	return (
 		<section className='search-bar'>
 			<span className='search-bar-column'>
@@ -11,7 +13,14 @@ const SearchBar: React.FC = () => {
 				<Button text='Search' style='light' size='sm' className='m-3' />
 			</span>
 
-			<Button text='Add Course' style='dark' icon='plus' />
+			<Button
+				text='Add Course'
+				style='dark'
+				icon='plus'
+				onClick={() => {
+					navigate('/courses/add');
+				}}
+			/>
 		</section>
 	);
 };

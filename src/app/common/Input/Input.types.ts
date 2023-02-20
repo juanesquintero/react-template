@@ -3,6 +3,8 @@ export interface IInputAtrr {
 	label?: string;
 	placeholder?: string;
 	className?: string;
+	name?: string;
+	ref?: any;
 	onChange?: (param: any) => void;
 }
 
