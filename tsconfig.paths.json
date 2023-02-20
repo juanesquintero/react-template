@@ -11,9 +11,6 @@
       "@assets/*": [
         "./src/assets/*"
       ],
-      "@shared/*": [
-        "./src/app/shared/*"
-      ]
     }
   }
 }

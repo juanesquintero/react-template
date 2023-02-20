@@ -1,0 +1,13 @@
+@import '../../../../../variables.scss';
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: .5rem 0rem;
+    margin-top: 1rem;
+
+    &__input {
+        margin: 0 .5rem;
+    }
+}
