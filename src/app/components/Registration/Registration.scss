@@ -1,0 +1,13 @@
+@import '../../../index.scss';
+
+.registration {
+	margin: 3rem 20rem;
+	background-color: $white;
+
+	@extend .rounded;
+	
+	&-form {
+		text-align: center;
+		padding: 4rem;
+	}
+}

@@ -8,12 +8,12 @@ export interface IButtonProps {
 	href?: string;
 	icon?: string;
 	children?: JSX.Element[] | JSX.Element;
-	onClick?: (param: any) => void;
+	onClick?: (param?: any) => void;
 }
 
 type ButtonType = 'button' | 'submit';
 
-type ButtonSize = 'sm' | 'lg';
+type ButtonSize = 'sm' | 'lg' | 'md';
 
 type ButtonStyle =
 	| 'outline-primary'

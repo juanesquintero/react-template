@@ -1,19 +1,16 @@
 import React from 'react';
 import '@app/App.scss';
 import Header from './components/Header/Header';
-import Courses from './components/Courses/Courses';
-import CreateCourse from './components/CreateCourse/CreateCourse';
+import { Outlet } from 'react-router-dom';
 
 const App: React.FC = () => {
 	return (
 		<section className='app'>
 			<Header />
 			<main className='app__content'>
-				<div className='app__content-section'>
-					<Courses />
-					<br />
-					<CreateCourse />
-				</div>
+				<main className='app__content-section'>
+					<Outlet />
+				</main>
 			</main>
 			<footer></footer>
 		</section>
