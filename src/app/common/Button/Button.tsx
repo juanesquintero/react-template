@@ -21,6 +21,7 @@ const Button: React.FC<IButtonProps> = (props: IButtonProps) => {
 	if (props.href) {
 		return <a {..._props}>{content}</a>;
 	}
+
 	return (
 		<button type={type} {..._props}>
 			{content}
