@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '@src/app/common/Input/Input';
 import Button from '@src/app/common/Button/Button';
 import AuthorsForm from './components/AutorsForm/AuthorsForm';
 import getCourseDuration from '@src/app/helpers/getCourseDuration';
 import { mockedCoursesList } from '../Courses/Courses.mock';
 import { useNavigate } from 'react-router-dom';
-import { ICourse } from '../Courses/Courses.types';
+import { IAuthor, ICourse } from '../Courses/Courses.types';
 import { useForm } from 'react-hook-form';
 
 const CreateCourse: React.FC = () => {
+	const [courseAuthors, setCourseAuthors] = useState([]);
+
+	const addCourseAuthor = (author: IAuthor) => {
+		if (!courseAuthors.some((a: IAuthor) => a.id === author.id)) {
+			setCourseAuthors([...courseAuthors, author]);
+		}
+	};
+
+	const removeCourseAuthor = (author: IAuthor) => {
+		setCourseAuthors(courseAuthors.filter((a: IAuthor) => a.id !== author.id));
+	};
+
 	const navigate = useNavigate();
+
+	// TODO FormMik react forms
 	const { register, handleSubmit } = useForm<ICourse>({
 		defaultValues: {
 			title: '',
@@ -69,7 +83,11 @@ const CreateCourse: React.FC = () => {
 						<p className='mt-5 ms-3'>{getCourseDuration(100)}</p>
 					</div>
 				</div>
-				<AuthorsForm />
+				<AuthorsForm
+					addCourseAuthor={addCourseAuthor}
+					removeCourseAuthor={removeCourseAuthor}
+					courseAuthors={courseAuthors}
+				/>
 			</form>
 		</div>
 	);

@@ -7,20 +7,19 @@ import { mockedAuthorsList } from '@src/app/components/Courses/Courses.mock';
 import AuthorItem from '../AuthorItem/AuthorItem';
 import { IAuthor } from '@src/app/components/Courses/Courses.types';
 
-const AuthorsForm: React.FC = () => {
+type IAuthorsFormPorps = {
+	addCourseAuthor: (author: IAuthor) => void;
+	removeCourseAuthor: (author: IAuthor) => void;
+	courseAuthors: IAuthor[];
+};
+
+const AuthorsForm: React.FC<IAuthorsFormPorps> = ({
+	addCourseAuthor,
+	removeCourseAuthor,
+	courseAuthors,
+}: IAuthorsFormPorps) => {
 	const [name, setName] = useState('');
 	const [authors, setAuthors] = useState(mockedAuthorsList);
-	const [courseAuthors, setCourseAuthors] = useState([]);
-
-	const addCourseAuthor = (author: IAuthor) => {
-		if (!courseAuthors.some((a: IAuthor) => a.id === author.id)) {
-			setCourseAuthors([...courseAuthors, author]);
-		}
-	};
-
-	const removeCourseAuthor = (author: IAuthor) => {
-		setCourseAuthors(courseAuthors.filter((a: IAuthor) => a.id !== author.id));
-	};
 
 	const addAuthor = () => {
 		if (!authors.some((a: IAuthor) => a.name === name)) {
